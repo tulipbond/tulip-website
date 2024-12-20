@@ -17,6 +17,7 @@ export default {
       backgroundImage: {
         'parallex': 'url("/bg_banner.jpg")',
         'banner':'url("/bann.png")',
+        'contact':'url("/contact.jpg")',
         
       },
       fontFamily: {

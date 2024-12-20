@@ -15,17 +15,16 @@ const Navbar: React.FC = () => {
   const getLinkClasses = (path: string): string => {
     return pathname === path
       ? 'text-red-500 border-b-2 border-red-500'
-      : 'text-gray-700 hover:text-red-500 hover:border-b-2 hover:border-red-500';
+      : 'text-gray-200 hover:text-red-500 hover:border-b-2 hover:border-red-500';
   };
 
   return (
-    <nav className="w-full bg-white max-w-[100rem] mx-auto sticky top-0 z-50 ">
-      <div className="  px-4 sm:px-6 lg:px-8">
+    <nav className="w-full bg-transparent max-w-[100rem] mx-auto fixed top-0 z-50">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Image src="/logoFinal.png" alt="logo" width={100} height={50} />
-           
           </Link>
 
           {/* Desktop Links */}
@@ -39,7 +38,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="md:hidden text-gray-800 hover:text-red-500 focus:outline-none"
+            className="md:hidden text-gray-200 hover:text-red-500 focus:outline-none"
             onClick={handleToggle}
           >
             <svg
@@ -62,7 +61,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-md">
+        <div className="md:hidden bg-black bg-opacity-75 shadow-md">
           <div className="px-4 py-2 space-y-2 flex flex-col text-center">
             <Link href="/" className={getLinkClasses('/')} onClick={handleToggle}>Home</Link>
             <Link href="/about" className={getLinkClasses('/about')} onClick={handleToggle}>About</Link>
