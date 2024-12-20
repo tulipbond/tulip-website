@@ -12,18 +12,18 @@ const HeroBanner = () => {
   },[])
   return (
     <section
-    data-aos="fade-left" className="bg-[url('https://img.freepik.com/free-photo/industrial-park-factory-building-warehouse_1417-1941.jpg')] bg-cover bg-center bg-no-repeat h-[50rem] w-full max-w-[100rem] mx-auto flex items-center justify-center overflow-hidden"
+    data-aos="fade-left" className="bg-banner bg-cover bg-center bg-no-repeat h-[50rem] w-full max-w-[100rem] mx-auto flex items-center justify-center overflow-hidden"
   >
 
     
 
     {/* Hero Content */}
     <div
-      className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 text-center transform transition-all duration-1000 ease-out">
+      className="max-w-7xl bg-white rounded-3xl py-10 bg-opacity-50 mx-auto px-6 sm:px-12 lg:px-16 text-center transform transition-all duration-1000 ease-out">
       <h1 className=" inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-orange-500 text-3xl font-extrabold  sm:text-4xl md:text-8xl ">
       About Us
       </h1>
-      <h1 className="text-4xl font-bold text-white">
+      <h1 className="text-4xl font-bold text-black">
             Dedicated to service since 1984
           </h1>
   
