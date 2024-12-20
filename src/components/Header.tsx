@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="w-full bg-white max-w-[100rem] mx-auto shadow-md sticky top-0 z-50 ">
+    <nav className="w-full bg-white max-w-[100rem] mx-auto sticky top-0 z-50 ">
       <div className="  px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18">
           {/* Logo */}

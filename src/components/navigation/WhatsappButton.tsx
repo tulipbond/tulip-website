@@ -6,7 +6,7 @@ import Image from "next/image";
 const WhatsAppButton: React.FC = () => {
   const handleClick = () => {
     const phoneNumber = "+923212423610"; // Replace with your phone number
-    const message = encodeURIComponent("Want to reserve warehouse?");
+    const message = encodeURIComponent("I Want to reserve warehouse.");
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
     window.open(whatsappURL, "_blank");

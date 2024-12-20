@@ -58,7 +58,7 @@ export default function ContactUshtmlForm() {
   return (
     // <!-- Hero -->
     <div
-    className={` w-full bg-gradient-to-bl from-red-600 via-transparent  ${
+    className={` w-full bg-gradient-to-bl from-red-600 via-transparent max-w-[100rem] mx-auto ${
       animate ? 'animate-slide-down' : ''
         }`}
       
@@ -66,7 +66,7 @@ export default function ContactUshtmlForm() {
       
       <ToastContainer />
       
-      <div className="px-4 w-full py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto ">
+      <div className="px-4 w-full  py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto ">
         {/* <!-- Grid --> */}
         <div className="grid items-center md:grid-cols-2 gap-8 lg:gap-12">
           <div>
