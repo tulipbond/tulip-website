@@ -38,7 +38,7 @@ export default function HeroBanner() {
           </span>
         </h1>
         <p className="mt-4  text-gray-300 max-w-2xl mx-auto leading-relaxed text-xl md:text-3xl ">
-          Freel free to ask
+          Feel free to ask
         </p>
        
       </div>
