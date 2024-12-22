@@ -32,12 +32,12 @@ const Navbar: React.FC = () => {
   const getLinkClasses = (path: string): string => {
     return pathname === path
     ? `border-b-2 ${isScrolled ? 'text-red-500 border-red-500' : 'text-red-500 border-red-500'}`
-    : `${isScrolled ? 'text-gray-800 hover:text-red-500 hover:border-red-500' : 'text-gray-200 hover:text-red-500 hover:border-red-500'}`;
+    : `${isScrolled ? 'text-gray-800 max-w-[100rem] mx-auto hover:text-red-500 hover:border-red-500' : 'text-gray-200 hover:text-red-500 hover:border-red-500'}`;
 };
 
   return (
-    <nav className={`w-full max-w-[100rem] mx-auto fixed top-0 z-50 transition-colors duration-300 ${
-      isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+    <nav className={`w-full max-w-[100rem] fixed top-0 z-50 transition-colors duration-300 ${
+      isScrolled ? 'bg-white' : ' bg-transparent'
     }`}>
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18">
