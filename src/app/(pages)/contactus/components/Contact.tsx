@@ -1,8 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import emailjs from 'emailjs-com';
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { MdCheckCircle, MdError } from "react-icons/md";
+
 
 
 export default function ContactUshtmlForm() {
@@ -19,6 +20,9 @@ export default function ContactUshtmlForm() {
     setAnimate(true); // Trigger animation after the component has mounted
   }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalSuccess, setModalSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -38,23 +42,30 @@ export default function ContactUshtmlForm() {
             formData,
             process.env.NEXT_PUBLIC_EMAILJS_USER_ID
         );
-        if (result.text === 'OK') {
-          toast.success("Form submitted successfully!");
+        if (result.text === "OK") {
+          setModalMessage("Form submitted successfully!");
+          setModalSuccess(true);
           setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            company: '',
-            description:''
-          })
+            firstName: "",
+            lastName: "",
+            email: "",
+            company: "",
+            description: "",
+          });
         }
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
-    } finally {
+      } catch (error) {
+        console.error(error);
+        setModalMessage("Something went wrong. Please try again later.");
+        setModalSuccess(false);
+      } finally {
         setIsSubmitting(false);
-    }
-};
+        setModalOpen(true);
+      }
+    };
+  
+    const closeModal = () => {
+      setModalOpen(false);
+    };
   return (
     // <!-- Hero -->
     <div
@@ -318,6 +329,32 @@ export default function ContactUshtmlForm() {
           </div>
         </div>
       </div>
+      {modalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg p-6 w-11/12 max-w-sm text-center">
+            <div className="flex flex-col items-center justify-center space-x-2">
+              {modalSuccess ? (
+                <MdCheckCircle className="text-green-500 text-4xl" />
+              ) : (
+                <MdError className="text-red-500 text-4xl" />
+              )}
+              <h2
+                className={`text-xl font-bold ${
+                  modalSuccess ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {modalMessage}
+              </h2>
+            </div>
+            <button
+              onClick={closeModal}
+              className="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

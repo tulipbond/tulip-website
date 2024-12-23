@@ -7,6 +7,9 @@ import Features from '@/components/Features'
 import HeroBanner from '@/components/HeroBanner'
 import Chamber from '@/components/Chamber'
 import React from 'react'
+import Partners from '@/components/Partners'
+
+
 
 
 const page = () => {
@@ -15,6 +18,7 @@ const page = () => {
 
         <HeroBanner />
         <Features/>
+        <Partners/>
          <Chamber/>
        <FAQ/>
       </>
