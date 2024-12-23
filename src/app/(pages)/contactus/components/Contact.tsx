@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import emailjs from 'emailjs-com';
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
