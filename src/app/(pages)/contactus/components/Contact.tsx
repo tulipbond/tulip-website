@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import emailjs from 'emailjs-com';
 import "react-toastify/dist/ReactToastify.css";
-import { MdCheckCircle, MdError } from "react-icons/md";
+import Image from "next/image";
 
 
 
@@ -332,26 +332,29 @@ export default function ContactUshtmlForm() {
       {modalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white rounded-lg p-6 w-11/12 max-w-sm text-center">
+
+          <button
+              onClick={closeModal}
+               className="flex justify-end w-full"
+            >
+               <Image src="/close.png" height={20} width={20} alt="close"/>
+            </button>
+
             <div className="flex flex-col items-center justify-center space-x-2">
               {modalSuccess ? (
-                <MdCheckCircle className="text-green-500 text-4xl" />
+                <Image src='/check.gif' height={120} width={120} alt="check"/>
               ) : (
-                <MdError className="text-red-500 text-4xl" />
+                <Image src='/warning.gif' height={120} width={120} alt="warning"/>
               )}
               <h2
-                className={`text-xl font-bold ${
+                className={`text-sm  ${
                   modalSuccess ? "text-green-600" : "text-red-600"
                 }`}
               >
                 {modalMessage}
               </h2>
             </div>
-            <button
-              onClick={closeModal}
-              className="mt-4 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
-            >
-              Close
-            </button>
+            
           </div>
         </div>
       )}
