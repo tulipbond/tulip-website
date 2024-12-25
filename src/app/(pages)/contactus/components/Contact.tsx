@@ -1,8 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import emailjs from 'emailjs-com';
-import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from "@/components/Modal";
+
+
 
 
 export default function ContactUshtmlForm() {
@@ -19,6 +21,9 @@ export default function ContactUshtmlForm() {
     setAnimate(true); // Trigger animation after the component has mounted
   }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [modalSuccess, setModalSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -38,23 +43,30 @@ export default function ContactUshtmlForm() {
             formData,
             process.env.NEXT_PUBLIC_EMAILJS_USER_ID
         );
-        if (result.text === 'OK') {
-          toast.success("Form submitted successfully!");
+        if (result.text === "OK") {
+          setModalMessage("Form submitted successfully!");
+          setModalSuccess(true);
           setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            company: '',
-            description:''
-          })
+            firstName: "",
+            lastName: "",
+            email: "",
+            company: "",
+            description: "",
+          });
         }
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong");
-    } finally {
+      } catch (error) {
+        console.error(error);
+        setModalMessage("Something went wrong. Please try again later.");
+        setModalSuccess(false);
+      } finally {
         setIsSubmitting(false);
-    }
-};
+        setModalOpen(true);
+      }
+    };
+  
+    const closeModal = () => {
+      setModalOpen(false);
+    };
   return (
     // <!-- Hero -->
     <div
@@ -318,6 +330,14 @@ export default function ContactUshtmlForm() {
           </div>
         </div>
       </div>
+      {modalOpen && (
+         <Modal
+         isOpen={modalOpen}
+         onClose={closeModal}
+         modalMessage={modalMessage}
+         modalSuccess={modalSuccess}
+       />
+      )}
     </div>
   );
 }
