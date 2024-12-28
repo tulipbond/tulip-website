@@ -30,9 +30,12 @@ const Footer: React.FC = () => {
             <Link href="https://maps.app.goo.gl/8ALkhriZuCCmWNzn6"><h1 className=" text-lg font-semibold underline">Ibrahim International</h1></Link> 
             <p>Address: F-24-A S.I.T.E, Karachi. 75700</p>
             <p>Email: ibrahiminternational2006@gmail.com</p>
+            <p>Tel: 32593117 | Cell: 0331-2615949</p>
            <Link href="https://maps.app.goo.gl/aeMNQuW4Xg2Jkw5x8"><h1 className=" text-lg font-semibold underline">Ajmal International</h1></Link>
             <p>Address: F-31 S.I.T.E, Karachi. 75700</p>
             <p>Email: ajmalinternational2008@gmail.com</p>
+            <p>Tel: 32593920 | Cell: 0331-2615946</p>
+
             
           </div>
           <div className="flex flex-col">
