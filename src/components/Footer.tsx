@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FaMapLocationDot } from "react-icons/fa6";
 
 const Footer: React.FC = () => {
   return (
@@ -27,11 +28,11 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <h2 className=" text-lg font-bold mb-2">Our Partners</h2>
-            <Link href="https://maps.app.goo.gl/8ALkhriZuCCmWNzn6"><h1 className=" text-lg font-semibold underline">Ibrahim International</h1></Link> 
+            <Link href="https://maps.app.goo.gl/8ALkhriZuCCmWNzn6"><h1 className=" text-lg font-semibold underline flex flex-row items-center gap-3">Ibrahim International <FaMapLocationDot className="text-white text-3xl" /></h1></Link> 
             <p>Address: F-24-A S.I.T.E, Karachi. 75700</p>
             <p>Email: ibrahiminternational2006@gmail.com</p>
             <p>Tel: 32593117 | Cell: 0331-2615949</p>
-           <Link href="https://maps.app.goo.gl/aeMNQuW4Xg2Jkw5x8"><h1 className=" text-lg font-semibold underline">Ajmal International</h1></Link>
+           <Link href="https://maps.app.goo.gl/aeMNQuW4Xg2Jkw5x8"><h1 className=" text-lg font-semibold underline flex flex-row items-center gap-3">Ajmal International  <FaMapLocationDot className="text-white text-3xl" /></h1></Link>
             <p>Address: F-31 S.I.T.E, Karachi. 75700</p>
             <p>Email: ajmalinternational2008@gmail.com</p>
             <p>Tel: 32593920 | Cell: 0331-2615946</p>
