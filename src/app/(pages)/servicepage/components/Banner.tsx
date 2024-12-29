@@ -12,7 +12,7 @@ const Banner = () => {
    },[])
   return (
     <section
-    data-aos="fade-right"
+    data-aos="fade-up"
       className="bg-[url('https://www.writermoversgroup.com/images/services/warehouse-banner-img.jpg')] bg-cover bg-center bg-no-repeat max-w-[100rem] w-full mx-auto h-[50rem] flex items-center justify-center overflow-hidden"
     >
 
