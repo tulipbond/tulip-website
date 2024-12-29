@@ -40,8 +40,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-         <ToastContainer />
-   <Header/>
+        <ToastContainer />
+        <Header/>
         {children}
         <WhatsAppButton />
         <Footer />
