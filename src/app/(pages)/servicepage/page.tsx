@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import Banner from "./components/Banner";
+import Image from "next/image";
 
 // Define the type for a service item
 interface Service {
@@ -10,6 +11,7 @@ interface Service {
 }
 
 const ServicesPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   // State to track the selected card
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
 
@@ -20,37 +22,25 @@ const ServicesPage = () => {
 
   // Refs to store references to each card div element
   const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-
+  
   useEffect(() => {
-    // Intersection Observer setup
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisibleCards((prev) => ({
-              ...prev,
-              [entry.target.id]: true,
-            }));
-            observer.unobserve(entry.target); // Stop observing once the card is visible
-          }
-        });
-      },
-      { threshold: 0.2 } // Trigger when 20% of the card is visible
-    );
-
-    // Observe each card
-    Object.values(cardRefs.current).forEach((card) => {
-      if (card) observer.observe(card);
-    });
-
-    return () => observer.disconnect(); // Cleanup observer on unmount
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer); 
+    
   }, []);
+
 
   const handleCardClick = (id: string) => {
     setSelectedCard(id);
   };
 
+
+
   const services: Service[] = [
+
+
     {
       id: "acre-land",
       title: "2 Acre Land",
@@ -100,8 +90,42 @@ const ServicesPage = () => {
         "Our on-site lifter facility is designed to assist with heavy lifting of materials, goods, and equipment. This ensures that our team can safely and efficiently handle any large items without additional outsourcing.",
     },
   ];
+  useEffect(() => {
+
+
+    // Intersection Observer setup
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleCards((prev) => ({
+              ...prev,
+              [entry.target.id]: true,
+            }));
+            observer.unobserve(entry.target); // Stop observing once the card is visible
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% of the card is visible
+    );
+
+    // Observe each card
+    Object.values(cardRefs.current).forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect(); // Cleanup observer on unmount
+  }, [isLoading,services]);
+
 
   return (
+    <>
+          {isLoading ? (
+            
+            <div className="flex items-center justify-center h-screen bg-gray-100">
+              <Image src="/warehouse.gif" height={100} width={100} alt="loader"/>
+            </div>
+          ) : (
     <>
       <Banner />
       <section className="py-20 px-5 md:px-20 max-w-[100rem] mx-auto">
@@ -130,8 +154,14 @@ const ServicesPage = () => {
           ))}
         </div>
       </section>
+      
+    </>
+)};
     </>
   );
 };
+
+
+
 
 export default ServicesPage;
