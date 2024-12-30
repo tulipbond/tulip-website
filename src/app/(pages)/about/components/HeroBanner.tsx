@@ -12,7 +12,7 @@ const HeroBanner = () => {
   },[])
   return (
     <section
-    data-aos="fade-left" className="bg-banner bg-cover bg-center bg-no-repeat h-[50rem] w-full max-w-[100rem] mx-auto flex items-center justify-center overflow-hidden"
+    data-aos="fade-up" className="bg-banner bg-cover bg-center bg-no-repeat h-[50rem] w-full max-w-[100rem] mx-auto flex items-center justify-center overflow-hidden"
   >
 
     
