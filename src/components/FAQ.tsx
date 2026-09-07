@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -35,10 +36,12 @@ function FAQ() {
             <p className="mt-1 hidden md:block text-black :text-neutral-400">
               Answers to the most frequently asked questions.
             </p>
-            <img
+            <Image
               src="https://static.vecteezy.com/system/resources/previews/047/492/151/non_2x/a-man-thinking-about-a-question-3d-photo-free-png.png"
-              alt=""
+              alt="Person thinking about a question"
               className="hidden sm:block"
+              width={400}
+              height={400}
             />
           </div>
         </div>

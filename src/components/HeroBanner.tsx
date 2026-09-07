@@ -1,29 +1,16 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export default function HeroBanner() {
-  const [animate, setAnimate] = useState(false);
-
-  useEffect(() => {
-    setAnimate(true);
-  }, []);
-
   return (
     <section
-      className={`relative bg-[url('https://cdn.pixabay.com/photo/2016/11/21/13/20/port-1845350_960_720.jpg')] bg-cover bg-center bg-no-repeat h-[50rem] w-full max-w-[100rem] mx-auto flex items-center justify-center overflow-hidden transform transition-all duration-500 ease-out ${
-        animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
+      className="relative bg-[url('https://cdn.pixabay.com/photo/2016/11/21/13/20/port-1845350_960_720.jpg')] bg-cover bg-center bg-no-repeat h-[50rem] w-full max-w-[100rem] mx-auto flex items-center justify-center overflow-hidden animate-fade-in-up"
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50" aria-hidden="true"></div>
 
       {/* Hero Content */}
       <div
-        className={`max-w-[100rem] mx-auto px-6 sm:px-12 lg:px-16 text-center transform transition-all duration-500 ease-out ${
-          animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
+        className="max-w-[100rem] mx-auto px-6 sm:px-12 lg:px-16 text-center animate-fade-in-up"
       >
         <h1 className="text-3xl font-extrabold text-white sm:text-4xl md:text-7xl leading-tight">
           Welcome to{" "}
