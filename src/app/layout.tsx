@@ -22,10 +22,6 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Tulip",
   description: "warehouse ware house",
-  //add google verification
-  verification: {
-    google: "FjRKWRZpZFZpXULdJ7THlxEzTDFUqwlh0TKgzj81EAs",
-  },
 };
 
 export default function RootLayout({
@@ -40,6 +36,7 @@ export default function RootLayout({
         <head>
         {/* Add viewport meta tag for responsiveness */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="google-site-verification" content="FjRKWRZpZFZpXULdJ7THlxEzTDFUqwlh0TKgzj81EAs" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
