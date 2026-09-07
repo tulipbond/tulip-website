@@ -10,6 +10,57 @@ interface Service {
   description: string;
 }
 
+const services: Service[] = [
+  {
+    id: "acre-land",
+    title: "2 Acre Land",
+    description:
+      "This expansive 2-acre property offers the perfect space for various business operations. Indoor and outdoor storage, parking facilities, well-maintained space is designed to support your growth and provide the room you need for your endeavors.",
+  },
+  {
+    id: "rcc-shed",
+    title: "70,000 SQ FT RCC A class Shed",
+    description:
+      "Our 70,000 sq ft RCC A class shed is built with industrial-grade materials to accommodate a variety of business needs. From warehousing to logistics, this space provides the infrastructure and flexibility to scale your operations.",
+  },
+  {
+    id: "open-area",
+    title: "35,000 SQ FT Open Area",
+    description:
+      "This open space of 35,000 sq ft is perfect for outdoor storage need and managing logistics. It offers a flexible solution that adapts to your unique business requirements, all within a safe and secure environment.",
+  },
+  {
+    id: "security",
+    title: "24/7 Armed & Unarmed Security",
+    description:
+      "Your peace of mind is our top priority. With professional, 24/7 security services, both armed and unarmed, we ensure the safety of your property, assets, and personnel at all times. Our security team is well-trained and highly responsive to any situation.",
+  },
+  {
+    id: "cctv",
+    title: "CCTV Surveillance",
+    description:
+      "Our advanced CCTV surveillance system is strategically placed throughout the facility to monitor all key areas. This provides additional security and allows us to keep an eye on your property from anywhere, anytime.",
+  },
+  {
+    id: "fire-safety",
+    title: "Fire Safety Infrastructure",
+    description:
+      "The facility is equipped with state-of-the-art fire safety systems, including fire extinguishers and emergency protocols, to ensure that we're always prepared in case of an emergency. Your safety is always our top priority.",
+  },
+  {
+    id: "loading-facility",
+    title: "Loading & Unloading Facility",
+    description:
+      "Our loading and unloading facilities are equipped with ramps and heavy-duty equipment to make your logistics process smoother. This enables efficient handling of goods and ensures that your operations run without delays.",
+  },
+  {
+    id: "lifter-facility",
+    title: "On-Site Lifter Facility",
+    description:
+      "Our on-site lifter facility is designed to assist with heavy lifting of materials, goods, and equipment. This ensures that our team can safely and efficiently handle any large items without additional outsourcing.",
+  },
+];
+
 const ServicesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   // State to track the selected card
@@ -36,60 +87,6 @@ const ServicesPage = () => {
     setSelectedCard(id);
   };
 
-
-
-  const services: Service[] = [
-
-
-    {
-      id: "acre-land",
-      title: "2 Acre Land",
-      description:
-        "This expansive 2-acre property offers the perfect space for various business operations. Indoor and outdoor storage, parking facilities, well-maintained space is designed to support your growth and provide the room you need for your endeavors.",
-    },
-    {
-      id: "rcc-shed",
-      title: "70,000 SQ FT RCC A class Shed",
-      description:
-        "Our 70,000 sq ft RCC A class shed is built with industrial-grade materials to accommodate a variety of business needs. From warehousing to logistics, this space provides the infrastructure and flexibility to scale your operations.",
-    },
-    {
-      id: "open-area",
-      title: "35,000 SQ FT Open Area",
-      description:
-        "This open space of 35,000 sq ft is perfect for outdoor storage need and managing logistics. It offers a flexible solution that adapts to your unique business requirements, all within a safe and secure environment.",
-    },
-    {
-      id: "security",
-      title: "24/7 Armed & Unarmed Security",
-      description:
-        "Your peace of mind is our top priority. With professional, 24/7 security services, both armed and unarmed, we ensure the safety of your property, assets, and personnel at all times. Our security team is well-trained and highly responsive to any situation.",
-    },
-    {
-      id: "cctv",
-      title: "CCTV Surveillance",
-      description:
-        "Our advanced CCTV surveillance system is strategically placed throughout the facility to monitor all key areas. This provides additional security and allows us to keep an eye on your property from anywhere, anytime.",
-    },
-    {
-      id: "fire-safety",
-      title: "Fire Safety Infrastructure",
-      description:
-        "The facility is equipped with state-of-the-art fire safety systems, including fire extinguishers and emergency protocols, to ensure that we're always prepared in case of an emergency. Your safety is always our top priority.",
-    },
-    {
-      id: "loading-facility",
-      title: "Loading & Unloading Facility",
-      description:
-        "Our loading and unloading facilities are equipped with ramps and heavy-duty equipment to make your logistics process smoother. This enables efficient handling of goods and ensures that your operations run without delays.",
-    },
-    {
-      id: "lifter-facility",
-      title: "On-Site Lifter Facility",
-      description:
-        "Our on-site lifter facility is designed to assist with heavy lifting of materials, goods, and equipment. This ensures that our team can safely and efficiently handle any large items without additional outsourcing.",
-    },
-  ];
   useEffect(() => {
 
 
@@ -115,7 +112,7 @@ const ServicesPage = () => {
     });
 
     return () => observer.disconnect(); // Cleanup observer on unmount
-  }, [isLoading,services]);
+  }, [isLoading]);
 
 
   return (

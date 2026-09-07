@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -151,11 +152,12 @@ function Card() {
                     role="tabpanel"
                     aria-labelledby="tabs-with-card-item-1"
                   >
-                    <img
-                      
-                      className="shadow-xl shadow-gray-200 rounded-xl className:shadow-gray-900/20"
+                    <Image
+                      className="shadow-xl shadow-gray-200 rounded-xl w-full h-auto className:shadow-gray-900/20"
                       src="https://images.pexels.com/photos/2881632/pexels-photo-2881632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                       alt="Features Image"
+                      width={1260}
+                      height={750}
                     />
                   </div>
 

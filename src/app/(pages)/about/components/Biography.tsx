@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -51,22 +52,26 @@ const HeroSection = () => {
         <div className="space-y-10">
           <div
             data-aos="fade-up"
-            className="overflow-hidden rounded-lg shadow-lg"
+            className="relative h-72 overflow-hidden rounded-lg shadow-lg"
           >
-            <img
+            <Image
               src="/tire.jpg"
               alt="TechWave Solutions Team"
-              className="w-full h-72 object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           <div
             data-aos="fade-up"
-            className="overflow-hidden rounded-lg shadow-lg"
+            className="relative h-72 overflow-hidden rounded-lg shadow-lg"
           >
-            <img
+            <Image
               src="/wareinner.jpg"
               alt="TechWave Solutions Team"
-              className="w-full h-72 object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>

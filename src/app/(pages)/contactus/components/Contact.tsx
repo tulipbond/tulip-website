@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import emailjs from 'emailjs-com';
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "@/components/Modal";
@@ -8,7 +8,6 @@ import Modal from "@/components/Modal";
 
 
 export default function ContactUshtmlForm() {
-  const [animate, setAnimate] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -17,9 +16,6 @@ export default function ContactUshtmlForm() {
     description: '',
 });
 
-  useEffect(() => {
-    setAnimate(true); // Trigger animation after the component has mounted
-  }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -70,9 +66,7 @@ export default function ContactUshtmlForm() {
   return (
     // <!-- Hero -->
     <div
-    className={` w-full bg-gradient-to-bl from-red-600 via-transparent max-w-[100rem] mx-auto ${
-      animate ? 'animate-slide-down' : ''
-        }`}
+    className="w-full bg-gradient-to-bl from-red-600 via-transparent max-w-[100rem] mx-auto animate-slide-down"
       
     >
       
