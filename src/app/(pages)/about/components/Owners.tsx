@@ -20,7 +20,7 @@ const OwnerDetail = () => {
         <div className="relative w-48 h-48 md:w-96 md:h-[410px] mx-auto">
           <Image
             src={pictureUrl}
-            alt={`${name}'s picture`}
+            alt="Muhammad Afzal Munif, founder of Tulip Industries bonded warehouse"
             fill
             className="object-cover rounded-lg border"
             sizes="(max-width: 768px) 192px, 384px"

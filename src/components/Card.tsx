@@ -155,7 +155,7 @@ function Card() {
                     <Image
                       className="shadow-xl shadow-gray-200 rounded-xl w-full h-auto className:shadow-gray-900/20"
                       src="https://images.pexels.com/photos/2881632/pexels-photo-2881632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                      alt="Features Image"
+                      alt="Warehouse and logistics operations at a bonded storage facility"
                       width={1260}
                       height={750}
                     />

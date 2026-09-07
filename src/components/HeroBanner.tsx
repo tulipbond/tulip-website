@@ -13,18 +13,18 @@ export default function HeroBanner() {
         className="max-w-[100rem] mx-auto px-6 sm:px-12 lg:px-16 text-center animate-fade-in-up"
       >
         <h1 className="text-3xl font-extrabold text-white sm:text-4xl md:text-7xl leading-tight">
-          Welcome to{" "}
+          Custom Bonded Warehouse in{" "}
           <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-orange-500">
-            Tulip
+            SITE, Karachi
           </span>
         </h1>
         <p className="mt-4 text-gray-300 max-w-2xl mx-auto leading-relaxed text-xl md:text-3xl">
-          Custom Bonded & Private Warehouse
+          Tulip Bond — private warehouse storage, security, and logistics
         </p>
 
         <div className="mt-6 flex flex-col items-center">
           <Link
-            href="/contactus"
+            href="/contact"
             className="bg-gradient-to-r from-red-500 to-orange-600 hover:text-black hover:bg-white text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-1 hover:scale-105 duration-300 ease-in-out"
           >
             Get a quote

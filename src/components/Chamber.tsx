@@ -17,10 +17,10 @@ function Clients() {
           data-aos="flip-right"
           className="w-2/3 sm:w-1/2 lg:w-full p-10 mx-auto text-start shadow-md bg-red-500 rounded-lg mb-6"
         >
-          <h1 className=" text-xl md:text-3xl font-bold  text-white  ">
-            Tulip Warehouse is a member of the Site Association of Industry and
+          <h2 className=" text-xl md:text-3xl font-bold  text-white  ">
+            Tulip Bonded Warehouse is a member of the SITE Association of Industry and
             the Karachi Chamber of Commerce and Industry.
-          </h1>
+          </h2>
         </div>
       </div>
     </>

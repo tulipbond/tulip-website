@@ -1,35 +1,32 @@
-"use client";
-
-import React, { useEffect, useState } from 'react';
-import HeroBanner from './components/HeroBanner';
-import Biography from './components/Biography';
+import type { Metadata } from "next";
+import { seoKeywords, SITE_NAME } from "@/lib/seo";
+import HeroBanner from "./components/HeroBanner";
+import Biography from "./components/Biography";
 import Owners from "./components/Owners";
-import Image from 'next/image';
 
-const Page: React.FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-    return () => clearTimeout(timer); // Clean up the timeout
-  }, []);
-
-  return (
-    <>
-      {isLoading ? (
-        <div className="flex items-center justify-center h-screen bg-gray-100">
-          <Image src="/warehouse.gif" height={100} width={100} alt="loader" />
-        </div>
-      ) : (
-        <>
-          <HeroBanner />
-          <Biography />
-          <Owners />
-        </>
-      )}
-    </>
-  );
+export const metadata: Metadata = {
+  title: "About Tulip Industries",
+  description:
+    "Tulip Industries Pvt. Ltd. operates a custom bonded warehouse in SITE, Karachi. Learn about our history since 1976 and our founder, Muhammad Afzal Munif.",
+  keywords: [
+    ...seoKeywords,
+    "Tulip Industries Karachi",
+    "warehouse company SITE Karachi",
+  ],
+  openGraph: {
+    title: `About Tulip Industries | ${SITE_NAME}`,
+    description:
+      "Family-operated custom bonded warehouse in SITE, Karachi with decades of warehousing experience.",
+  },
+  alternates: { canonical: "/about" },
 };
 
-export default Page;
+export default function AboutPage() {
+  return (
+    <>
+      <HeroBanner />
+      <Biography />
+      <Owners />
+    </>
+  );
+}
