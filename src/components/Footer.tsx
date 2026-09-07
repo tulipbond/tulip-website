@@ -48,10 +48,22 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-white mt-8 pt-4 text-center">
+        <div className="border-t border-white/70 mt-8 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p>
             &copy; {new Date().getFullYear()} Warehouse & Bond. All rights
             reserved.
+          </p>
+          <p className="flex items-center gap-2 text-sm text-white/90">
+            <Image
+              src="/synchro-9-logo.png"
+              alt="synchro-9"
+              width={20}
+              height={20}
+              className="rounded-md"
+            />
+            <span>
+              Powered by <span className="font-semibold tracking-wide">Synchro-9</span>
+            </span>
           </p>
         </div>
       </div>
