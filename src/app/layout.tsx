@@ -22,6 +22,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Tulip",
   description: "warehouse ware house",
+  verification: {
+    google: "FjRKWRZpZFZpXULdJ7THlxEzTDFUqwlh0TKgzj81EAs",
+  },
 };
 
 export default function RootLayout({
