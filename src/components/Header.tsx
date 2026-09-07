@@ -43,15 +43,15 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-18">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logoFinal.png" alt="logo" width={100} height={50} />
+            <Image src="/logoFinal.png" alt="Tulip Bond warehouse logo" width={100} height={50} />
           </Link>
 
           {/* Desktop Links */}
           <div className="hidden md:flex space-x-8">
             <Link href="/" className={getLinkClasses('/')}>Home</Link>
             <Link href="/about" className={getLinkClasses('/about')}>About</Link>
-            <Link href="/servicepage" className={getLinkClasses('/servicepage')}>Services</Link>
-            <Link href="/contactus" className={getLinkClasses('/contactus')}>Contact</Link>
+            <Link href="/services" className={getLinkClasses('/services')}>Services</Link>
+            <Link href="/contact" className={getLinkClasses('/contact')}>Contact</Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -109,8 +109,8 @@ const Navbar: React.FC = () => {
           
           <Link href="/" className={getLinkClasses('/')} onClick={handleToggle}>Home</Link>
           <Link href="/about" className={getLinkClasses('/about')} onClick={handleToggle}>About</Link>
-          <Link href="/servicepage" className={getLinkClasses('/servicepage')} onClick={handleToggle}>Services</Link>
-          <Link href="/contactus" className={getLinkClasses('/contactus')} onClick={handleToggle}>Contact</Link>
+          <Link href="/services" className={getLinkClasses('/services')} onClick={handleToggle}>Services</Link>
+          <Link href="/contact" className={getLinkClasses('/contact')} onClick={handleToggle}>Contact</Link>
         </div>
       </div>
     </nav>

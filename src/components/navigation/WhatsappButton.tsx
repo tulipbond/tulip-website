@@ -21,7 +21,7 @@ const WhatsAppButton: React.FC = () => {
     >
        <Image
        src="/whatsapp.png"
-       alt="whatsapp"
+       alt="Chat with Tulip Bond warehouse on WhatsApp"
        height={50}
        width={50}
 

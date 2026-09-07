@@ -26,14 +26,14 @@ const HeroSection = () => {
 
   return (
     <section className="py-20 px-5 md:px-20 max-w-[100rem] mx-auto">
-      <h1 data-aos="fade-down" className="text-center mb-10 font-extrabold text-5xl">Know About Tulip Industries </h1>
+      <h2 data-aos="fade-down" className="text-center mb-10 font-extrabold text-5xl">Know About Tulip Industries </h2>
       <div className="grid md:grid-cols-2 gap-10 items-center">
         {/* Left Text Section */}
         <div data-aos="fade-right" className="space-y-6">
-          <h1 className="text-center text-4xl font-semibolc tracking-tighter">
+          <h3 className="text-center text-4xl font-semibolc tracking-tighter">
             Owned and operated by Tulip Industries Pvt. Ltd., with its parent
             company headquartered in SITE, Karachi.{" "}
-          </h1>
+          </h3>
           <p className="text-gray-600 text-justify tracking-tighter text-lg md:text-3xl">
             At Tulip Custom Bonded Warehouse, we are more than just a
             warehousing solution. We understand the complexities of a dynamic
@@ -56,7 +56,7 @@ const HeroSection = () => {
           >
             <Image
               src="/tire.jpg"
-              alt="TechWave Solutions Team"
+              alt="Industrial cargo stored at Tulip Bond custom bonded warehouse in SITE Karachi"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -68,7 +68,7 @@ const HeroSection = () => {
           >
             <Image
               src="/wareinner.jpg"
-              alt="TechWave Solutions Team"
+              alt="Interior of Tulip Bond warehouse facility in SITE Karachi"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"

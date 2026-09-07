@@ -18,11 +18,11 @@ export default function HeroBanner() {
         <h1 className="text-3xl font-extrabold text-white sm:text-4xl md:text-7xl leading-tight">
           Contact{" "}
           <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-orange-500">
-            Us
+            Tulip Bond
           </span>
         </h1>
         <p className="mt-4  text-gray-300 max-w-2xl mx-auto leading-relaxed text-xl md:text-3xl ">
-          Feel free to ask
+          Custom bonded warehouse in SITE, Karachi
         </p>
        
       </div>

@@ -56,7 +56,7 @@ const features = [
     title: "Fire Extinguisher Available",
     description: "Our facility is equipped with fire extinguishers to ensure safety.",
     icon: <FaFireExtinguisher size={36} className="text-red-600" />,
-    link: "#fire-extinguisher",
+    link: "#fire-safety",
   },
   {
     title: "Loading & Unloading Facility",
@@ -82,7 +82,7 @@ const ServiceCard = ({ title, description, icon, link }: ServiceCardProps) => {
   const router = useRouter();
 
   const handleRedirect = () => {
-    router.push(`/servicepage${link}`);
+    router.push(`/services${link}`);
   };
 
   return (
@@ -106,10 +106,11 @@ const Service = () => {
     <section className="w-full max-w-[100rem] mx-auto px-4 md:px-8 lg:px-16 py-12 bg-gray-50">
       <div className="container mx-auto text-center">
         <h2  className="text-3xl font-bold text-gray-800 sm:text-4xl md:text-5xl">
-          What We Offer
+          Warehouse Facilities in SITE, Karachi
         </h2>
         <p className="mt-4 text-lg text-gray-600">
-          Explore our wide range of facilities designed to meet your business needs.
+          Custom bonded and private warehouse storage, security, and logistics
+          for importers and industrial clients in Karachi.
         </p>
         <div  className="mt-10 flex flex-wrap justify-center">
           {features.map((feature, index) => (

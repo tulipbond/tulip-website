@@ -21,11 +21,11 @@ const HeroBanner = () => {
     <div
       className="max-w-7xl bg-white rounded-3xl py-10 bg-opacity-50 mx-auto px-6 sm:px-12 lg:px-16 text-center transform transition-all duration-1000 ease-out">
       <h1 className=" inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-orange-500 text-3xl font-extrabold  sm:text-4xl md:text-8xl ">
-      About Us
+      About Tulip Bonded Warehouse
       </h1>
-      <h1 className="text-4xl font-bold text-black">
+      <p className="text-4xl font-bold text-black">
             Dedicated to service since 1984
-          </h1>
+          </p>
   
     </div>
 
