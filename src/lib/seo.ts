@@ -24,6 +24,7 @@ export const seoKeywords = [
   "duty free warehouse Karachi",
   "Tulip Bond",
   "Tulip Industries warehouse",
+  "bonded service"
 ];
 
 export const defaultDescription =
