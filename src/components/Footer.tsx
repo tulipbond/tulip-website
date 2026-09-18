@@ -53,7 +53,12 @@ const Footer: React.FC = () => {
             &copy; {new Date().getFullYear()} Warehouse & Bond. All rights
             reserved.
           </p>
-          <p className="flex items-center gap-2 text-sm text-white/90">
+          <a
+            href="https://www.synchro9.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-white/90 hover:text-white"
+          >
             <Image
               src="/synchro-9-logo.png"
               alt="synchro-9"
@@ -64,7 +69,7 @@ const Footer: React.FC = () => {
             <span>
               Powered by <span className="font-semibold tracking-wide">Synchro-9</span>
             </span>
-          </p>
+          </a>
         </div>
       </div>
     </footer>

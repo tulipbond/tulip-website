@@ -88,14 +88,14 @@ const ServiceCard = ({ title, description, icon, link }: ServiceCardProps) => {
   return (
     <div
       onClick={handleRedirect}
-      className="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8 cursor-pointer transform transition-transform hover:scale-105"
+      className="h-full cursor-pointer transform transition-transform hover:scale-[1.03]"
     >
-      <div data-aos="flip-right" className="h-full flex flex-col items-center p-6 bg-white shadow-lg rounded-lg hover:bg-red-50">
+      <div data-aos="flip-right" className="h-full flex flex-col items-center p-5 sm:p-6 bg-white shadow-lg rounded-lg hover:bg-red-50">
         <div className="mb-4 h-16 w-16 flex items-center justify-center rounded-full bg-red-100">
           {icon}
         </div>
-        <h3 className="mb-2 text-lg font-bold text-gray-800 text-center">{title}</h3>
-        <p className="text-center text-gray-600">{description}</p>
+        <h3 className="mb-2 text-base sm:text-lg font-bold text-gray-800 text-center">{title}</h3>
+        <p className="text-center text-sm sm:text-base text-gray-600">{description}</p>
       </div>
     </div>
   );
@@ -103,16 +103,16 @@ const ServiceCard = ({ title, description, icon, link }: ServiceCardProps) => {
 
 const Service = () => {
   return (
-    <section className="w-full max-w-[100rem] mx-auto px-4 md:px-8 lg:px-16 py-12 bg-gray-50">
-      <div className="container mx-auto text-center">
-        <h2  className="text-3xl font-bold text-gray-800 sm:text-4xl md:text-5xl">
+    <section className="w-full max-w-[100rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-16 pt-24 pb-16 bg-gray-50">
+      <div className="text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight px-2">
           Warehouse Facilities in SITE, Karachi
         </h2>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-2">
           Custom bonded and private warehouse storage, security, and logistics
           for importers and industrial clients in Karachi.
         </p>
-        <div  className="mt-10 flex flex-wrap justify-center">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {features.map((feature, index) => (
             <ServiceCard key={index} {...feature} />
           ))}
