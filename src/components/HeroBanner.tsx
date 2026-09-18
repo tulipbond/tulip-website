@@ -19,7 +19,7 @@ export default function HeroBanner() {
           </span>
         </h1>
         <p className="mt-4 text-gray-300 max-w-2xl mx-auto leading-relaxed text-xl md:text-3xl">
-          Tulip Bond — private warehouse storage, security, and logistics
+          Tulip Bond private warehouse storage, security, and logistics
         </p>
 
         <div className="mt-6 flex flex-col items-center">

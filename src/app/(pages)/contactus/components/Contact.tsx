@@ -72,11 +72,11 @@ export default function ContactUshtmlForm() {
       
       
       
-      <div className="px-4 w-full  py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto ">
+      <div className="px-4 w-full  py-10 sm:px-6 lg:px-8 lg:py-24 mx-auto ">
         {/* <!-- Grid --> */}
         <div className="grid items-center md:grid-cols-2 gap-8 lg:gap-12">
           <div>
-            <div className="mt-4 md:mb-12 max-w-2xl">
+            <div className="max-w-2xl">
               <h1 className="mb-4 font-semibold text-gray-800 text-4xl lg:text-5xl :text-neutral-200">
                 Fully customizable rules to match your unique needs
               </h1>
@@ -87,7 +87,7 @@ export default function ContactUshtmlForm() {
               </p>
             </div>
 
-            <blockquote className="hidden md:block relative max-w-sm">
+            <blockquote className="hidden md:block relative max-w-sm mt-10">
               <svg
                 className="absolute top-0 start-0 transhtmlForm -translate-x-6 -translate-y-8 size-16 text-gray-200 :text-neutral-800"
                 width="16"
@@ -124,9 +124,9 @@ export default function ContactUshtmlForm() {
             </blockquote>
           </div>
 
-          <div>
-            <div className="lg:max-w-lg lg:mx-auto lg:me-0 ms-auto">
-              <form onSubmit={handleSubmit} className="p-4 sm:p-7 flex flex-col bg-white rounded-2xl shadow-lg mt-1 sm:mt-40">
+          <div className="w-full">
+            <div className="w-full">
+              <form onSubmit={handleSubmit} className="p-4 sm:p-7 flex flex-col bg-white rounded-2xl shadow-lg">
                 <div className="text-center">
                   <h1 className="block text-2xl font-bold text-gray-800 :text-white mb-5">
                     Contact Us

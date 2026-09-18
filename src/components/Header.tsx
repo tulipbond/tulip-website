@@ -36,11 +36,11 @@ const Navbar: React.FC = () => {
 };
 
   return (
-    <nav className={`w-full max-w-[100rem] mx-auto fixed top-0 z-50 transition-colors duration-300 ${
+    <nav className={`w-full fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
       isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
     }`}>
-      <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18">
+      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Image src="/logoFinal.png" alt="Tulip Bond warehouse logo" width={100} height={50} />
@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
 
        {/* Mobile Menu */}
        <div
-        className={`fixed top-0 right-0 h-full backdrop-blur shadow-md transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-64 bg-white/95 backdrop-blur shadow-md transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } md:hidden`}
       >
