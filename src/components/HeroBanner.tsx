@@ -1,84 +1,93 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FaFacebookF } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa6";
+
+const stats = [
+  { value: "2 acres", label: "Facility land" },
+  { value: "70,000", label: "Sq ft RCC shed" },
+  { value: "35,000", label: "Sq ft open yard" },
+  { value: "24/7", label: "Security & CCTV" },
+];
 
 export default function HeroBanner() {
   return (
-    <section
-      className="relative w-full max-w-[100rem] mx-auto flex items-center justify-center overflow-hidden min-h-[34rem] sm:min-h-[42rem] lg:min-h-[50rem] animate-fade-in-up"
-    >
+    <section className="relative isolate flex min-h-[88vh] w-full items-center overflow-hidden">
       <Image
         src="/hero-port.jpg"
-        alt="Stacked shipping containers and port cranes at the bonded warehouse terminal"
+        alt="Shipping containers and port cranes near the bonded warehouse terminal in Karachi"
         fill
         priority
         sizes="100vw"
         className="object-cover object-center"
       />
-
-      {/* Overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/35 to-black/75"
+        className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/55 to-[#0B0B12]/95"
         aria-hidden="true"
-      ></div>
+      />
 
-      {/* Hero Content */}
-      <div
-        className="relative z-10 max-w-[100rem] mx-auto px-6 py-24 sm:px-12 lg:px-16 text-center animate-fade-in-up"
-      >
-        <h1 className="text-3xl font-extrabold text-white sm:text-4xl md:text-7xl leading-tight">
-          Custom Bonded Warehouse in{" "}
-          <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-red-500 to-orange-500">
-            SITE, Karachi
+      <div className="shell relative z-10 pb-16 pt-32 md:pb-20 md:pt-40">
+        <div className="max-w-3xl">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-white/80 backdrop-blur">
+            <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+            Customs bonded · Since 1976
           </span>
-        </h1>
-        <p className="mt-4 text-gray-300 max-w-2xl mx-auto leading-relaxed text-xl md:text-3xl">
-          Tulip Bond private warehouse storage, security, and logistics
-        </p>
 
-        <div className="mt-6 flex flex-col items-center">
-          <Link
-            href="/contact"
-            className="bg-gradient-to-r from-red-500 to-orange-600 hover:text-black hover:bg-white text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-1 hover:scale-105 duration-300 ease-in-out"
-          >
-            Get a quote
-          </Link>
+          <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-7xl">
+            Custom bonded warehouse{" "}
+            <span className="bg-gradient-to-r from-red-500 via-red-400 to-orange-400 bg-clip-text text-transparent">
+              in SITE, Karachi
+            </span>
+          </h1>
 
-          {/* Social Media Icons */}
-          <div className="mt-4 flex space-x-4">
-            <a
-              href="https://www.facebook.com/profile.php?id=61571041137335"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-red-600 transition transform hover:scale-105"
-              aria-label="Facebook"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                className="w-8 h-8"
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
+            Private bonded storage, security and logistics for importers and
+            industrial clients — from bulky industrial cargo to small, high-value
+            goods, all in one secure facility.
+          </p>
+
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Link href="/contact" className="btn-primary">
+              Get a quote
+            </Link>
+            <Link href="/services" className="btn-ghost">
+              Explore services
+            </Link>
+            <div className="ml-1 flex items-center gap-2 sm:ml-3">
+              <a
+                href="https://www.facebook.com/profile.php?id=61571041137335"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-white/45 hover:text-white"
               >
-                <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.129V8.412c0-3.1 1.892-4.785 4.655-4.785 1.324 0 2.463.098 2.793.142v3.24h-1.916c-1.5 0-1.793.713-1.793 1.76v2.31h3.587l-.467 3.622h-3.12V24h6.116c.732 0 1.325-.593 1.325-1.324V1.325C24 .593 23.407 0 22.675 0z" />
-              </svg>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/tulip-bond/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-red-600 transition transform hover:scale-105"
-              aria-label="LinkedIn"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                className="w-8 h-8"
+                <FaFacebookF className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/tulip-bond/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition hover:border-white/45 hover:text-white"
               >
-                <path d="M22.23 0H1.77C.791 0 0 .774 0 1.732v20.536C0 23.226.792 24 1.77 24h20.46c.98 0 1.77-.774 1.77-1.732V1.732C24 .774 23.21 0 22.23 0zM7.12 20.452H3.56V9.042h3.56v11.41zM5.34 7.555c-1.136 0-2.059-.932-2.059-2.08 0-1.15.923-2.08 2.059-2.08s2.059.932 2.059 2.08c0 1.148-.922 2.08-2.059 2.08zm15.11 12.897h-3.56v-5.624c0-1.341-.025-3.067-1.872-3.067-1.872 0-2.16 1.462-2.16 2.973v5.718h-3.56V9.042h3.42v1.558h.05c.477-.902 1.64-1.852 3.374-1.852 3.608 0 4.274 2.375 4.274 5.462v6.242z" />
-              </svg>
-            </a>
+                <FaLinkedinIn className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         </div>
+
+        <dl className="mt-14 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md sm:grid-cols-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="bg-black/20 px-5 py-5">
+              <dd className="font-display text-2xl font-semibold text-white sm:text-3xl">
+                {stat.value}
+              </dd>
+              <dt className="mt-1 text-[0.7rem] uppercase tracking-[0.16em] text-white/50">
+                {stat.label}
+              </dt>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

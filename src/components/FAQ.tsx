@@ -1,141 +1,135 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { useState } from "react";
+import Link from "next/link";
+import { business } from "@/lib/seo";
+
+const faqs = [
+  {
+    question:
+      "What is a custom bonded warehouse, and how does it benefit my business?",
+    answer:
+      "A custom bonded warehouse is a secure facility where imported goods can be stored without paying duties and taxes until released for local consumption. This helps manage cash flow, store goods securely, and defer customs payments.",
+  },
+  {
+    question:
+      "What types of goods can be stored in Tulip Bonds custom warehouse?",
+    answer:
+      "Tulip Bonds warehouse accommodates a wide range of goods, including perishable items, electronics, industrial equipment, and raw materials, and offering you secure storage options.",
+  },
+  {
+    question: "How long can goods be stored in your bonded warehouse?",
+    answer:
+      "Goods can typically be stored in our bonded warehouse for up to 6 months, depending on customs regulations. During this period, you can re-export, process, or release them after paying the required duties.",
+  },
+  {
+    question: "What security measures are in place at Tulip Bonds warehouse?",
+    answer:
+      "Our warehouse is equipped with 24/7 surveillance, controlled access, and fire suppression systems to ensure the safety and integrity of your goods.",
+  },
+  {
+    question: "How can I track my inventory and manage my stored goods?",
+    answer:
+      "Tulip Bond offers a realtime updates on stock levels, storage duration, and customs clearance status via whatsapp and email.",
+  },
+];
 
 function FAQ() {
-  // State to keep track of which accordion is open
-  const [open, setOpen] = useState<number | null>(null);
+  const [open, setOpen] = useState<number | null>(0);
 
-  // Toggle function to open/close the accordion
   const toggleAccordion = (index: number) => {
-    setOpen(open === index ? null : index); // Close the accordion if it's already open, otherwise open it
+    setOpen(open === index ? null : index);
   };
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // Duration of animation (in milliseconds)
-      once: true, // Whether animation should happen only once
-    });
-  }, []);
 
   return (
-    <div
-      data-aos="fade-up"
-      className="max-w-[100rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-gradient-to-bl from-red-600 via-transparent"
-    >
-      <div className="grid md:grid-cols-5 gap-10">
-        <div className="md:col-span-2">
-          <div className="max-w-xs">
-            <h2 className="text-2xl font-bold md:text-4xl md:leading-tight :text-white  text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500">
-              Frequently
-              <br />
-              asked questions
-            </h2>
-            <p className="mt-1 hidden md:block text-black :text-neutral-400">
-              Answers to the most frequently asked questions.
+    <section id="faq" className="section bg-[#F7F7F8]">
+      <div className="shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <span className="eyebrow">
+            <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
+            FAQ
+          </span>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl md:text-5xl">
+            Frequently asked questions
+          </h2>
+          <p className="mt-4 lead max-w-sm">
+            Answers to the questions importers ask us most about bonded storage
+            in Karachi.
+          </p>
+
+          <div className="mt-8 rounded-2xl border border-line bg-white p-6">
+            <p className="font-display text-lg font-semibold text-ink">
+              Still have questions?
             </p>
-            <Image
-              src="https://static.vecteezy.com/system/resources/previews/047/492/151/non_2x/a-man-thinking-about-a-question-3d-photo-free-png.png"
-              alt="Person thinking about a question"
-              className="hidden sm:block"
-              width={400}
-              height={400}
-            />
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">
+              Speak to our team about your cargo, timelines and customs
+              requirements.
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <Link href="/contact" className="btn-primary !px-5 !py-2.5">
+                Contact us
+              </Link>
+              <a
+                href={`tel:${business.phone}`}
+                className="text-sm font-semibold text-ink transition hover:text-red-600"
+              >
+                {business.telephoneDisplay}
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="md:col-span-3">
-          <div className="hs-accordion-group divide-y divide-black">
-            {/* Each accordion section */}
-            {[
-              {
-                question:
-                  "What is a custom bonded warehouse, and how does it benefit my business?",
-                answer:
-                  "A custom bonded warehouse is a secure facility where imported goods can be stored without paying duties and taxes until released for local consumption. This helps manage cash flow, store goods securely, and defer customs payments.",
-              },
-              {
-                question:
-                  "What types of goods can be stored in Tulip Bonds custom warehouse?",
-                answer:
-                  "Tulip Bonds warehouse accommodates a wide range of goods, including perishable items, electronics, industrial equipment, and raw materials, and offering you secure storage options.",
-              },
-              {
-                question:
-                  "How long can goods be stored in your bonded warehouse?",
-                answer:
-                  "Goods can typically be stored in our bonded warehouse for up to 6 months, depending on customs regulations. During this period, you can re-export, process, or release them after paying the required duties.",
-              },
-              {
-                question:
-                  "What security measures are in place at Tulip Bonds warehouse?",
-                answer:
-                  "Our warehouse is equipped with 24/7 surveillance, controlled access, and fire suppression systems to ensure the safety and integrity of your goods.",
-              },
-              {
-                question:
-                  "How can I track my inventory and manage my stored goods?",
-                answer:
-                  "Tulip Bond offers a realtime updates on stock levels, storage duration, and customs clearance status via whatsapp and email.",
-              },
-            ].map((item, index) => (
-              <div key={index} className="hs-accordion pt-6 pb-3">
+        <div className="divide-y divide-line border-y border-line">
+          {faqs.map((item, index) => {
+            const isOpen = open === index;
+            return (
+              <div key={item.question}>
                 <button
-                  className="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500"
-                  onClick={() => toggleAccordion(index)} // Toggle open/close on click
-                  aria-expanded={open === index ? "true" : "false"} // Update aria-expanded based on open state
+                  type="button"
+                  className="flex w-full items-center justify-between gap-6 py-5 text-left"
+                  onClick={() => toggleAccordion(index)}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${index}`}
                 >
-                  {item.question}
-                  <svg
-                    className={`hs-accordion-active:hidden block shrink-0 size-5 text-zinc-900 group-hover:text-gray-500 ${
-                      open === index ? "rotate-180" : ""
+                  <span className="font-display text-base font-medium leading-snug text-ink sm:text-lg">
+                    {item.question}
+                  </span>
+                  <span
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition duration-300 ${
+                      isOpen
+                        ? "rotate-45 border-red-200 bg-red-50 text-red-600"
+                        : "border-line text-muted"
                     }`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    aria-hidden="true"
                   >
-                    <path d="m6 9 6 6 6-6" />
-                  </svg>
-                  <svg
-                    className={`hs-accordion-active:block hidden shrink-0 size-5 text-zinc-900 group-hover:text-gray-500 ${
-                      open === index ? "rotate-180" : ""
-                    }`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="m18 15-6-6-6 6" />
-                  </svg>
+                    <svg
+                      className="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.8}
+                    >
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </span>
                 </button>
                 <div
-                  className={`hs-accordion-content w-full overflow-hidden transition-[height] duration-300 ${
-                    open === index ? "block" : "hidden"
+                  id={`faq-panel-${index}`}
+                  className={`overflow-hidden transition-all duration-300 ${
+                    isOpen ? "max-h-96 pb-5 opacity-100" : "max-h-0 opacity-0"
                   }`}
                   role="region"
-                  aria-labelledby={`hs-basic-with-title-and-arrow-stretched-heading-${index}`}
                 >
-                  <p className="text-gray-600">{item.answer}</p>
+                  <p className="pr-12 text-sm leading-relaxed text-muted sm:text-base">
+                    {item.answer}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

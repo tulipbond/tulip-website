@@ -1,37 +1,16 @@
-"use client"
-import React, { useEffect } from 'react'
-import AOS from "aos";
-import "aos/dist/aos.css";
+import Banner from "../../servicepage/components/Banner";
 
 const HeroBanner = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // Duration of animation (in milliseconds)
-      once: true, // Whether animation should happen only once
-    });
-  },[])
   return (
-    <section
-    data-aos="fade-up" className="bg-banner bg-cover bg-center bg-no-repeat h-[50rem] w-full max-w-[100rem] mx-auto flex items-center justify-center overflow-hidden"
-  >
+    <Banner
+      eyebrow="About us"
+      title="About Tulip"
+      highlight="Bonded Warehouse"
+      subtitle="Dedicated to service since 1984 — family-operated bonded warehousing in the heart of SITE, Karachi."
+      image="/bann.png"
+      alt="Tulip Bond bonded warehouse facility in SITE, Karachi"
+    />
+  );
+};
 
-    
-
-    {/* Hero Content */}
-    <div
-      className="max-w-7xl bg-white rounded-3xl py-10 bg-opacity-50 mx-auto px-6 sm:px-12 lg:px-16 text-center transform transition-all duration-1000 ease-out">
-      <h1 className=" inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-800 to-orange-500 text-3xl font-extrabold  sm:text-4xl md:text-8xl ">
-      About Tulip Bonded Warehouse
-      </h1>
-      <p className="text-4xl font-bold text-black">
-            Dedicated to service since 1984
-          </p>
-  
-    </div>
-
-    
-  </section>
-  )
-}
-
-export default HeroBanner
+export default HeroBanner;

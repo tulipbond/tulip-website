@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-// Define Props Type
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -18,32 +17,44 @@ const Modal: React.FC<ModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <>
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-        <div className="bg-white rounded-lg p-5 w-11/12 max-w-sm text-center">
-         
-          <button onClick={onClose} className="flex justify-end w-full">
-            <Image src="/close.png" height={20} width={20} alt="close" />
-          </button>
-
-          
-          <div className="flex flex-col items-center justify-center space-x-2">
-            {modalSuccess ? (
-              <Image src="/check.gif" height={120} width={120} alt="check" />
-            ) : (
-              <Image src="/warning.gif" height={120} width={120} alt="warning" />
-            )}
-            <h2
-              className={`text-sm ${
-                modalSuccess ? "text-green-600" : "text-red-600"
-              }`}
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm">
+      <div className="w-full max-w-sm rounded-3xl border border-line bg-white p-6 text-center shadow-soft">
+        <div className="flex justify-end">
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-line text-muted transition hover:border-red-200 hover:text-red-600"
+          >
+            <svg
+              className="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.8}
+              aria-hidden="true"
             >
-              {modalMessage}
-            </h2>
-          </div>
+              <path d="M6 6l12 12M18 6 6 18" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="flex flex-col items-center gap-4">
+          <Image
+            src={modalSuccess ? "/check.gif" : "/warning.gif"}
+            height={112}
+            width={112}
+            alt={modalSuccess ? "Success" : "Error"}
+            unoptimized
+          />
+          <p className="font-display text-base font-medium text-ink">
+            {modalMessage}
+          </p>
+          <button onClick={onClose} className="btn-primary w-full !py-3">
+            Close
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

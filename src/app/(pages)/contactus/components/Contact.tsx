@@ -1,337 +1,305 @@
 "use client";
 import { useState } from "react";
-import emailjs from 'emailjs-com';
+import emailjs from "emailjs-com";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "@/components/Modal";
-
-
-
+import { business } from "@/lib/seo";
 
 export default function ContactUshtmlForm() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    company: '',
-    description: '',
-});
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    description: "",
+  });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [modalSuccess, setModalSuccess] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-        const result = await emailjs.send(
-            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-            formData,
-            process.env.NEXT_PUBLIC_EMAILJS_USER_ID
-        );
-        if (result.text === "OK") {
-          setModalMessage("Form submitted successfully!");
-          setModalSuccess(true);
-          setFormData({
-            firstName: "",
-            lastName: "",
-            email: "",
-            company: "",
-            description: "",
-          });
-        }
-      } catch (error) {
-        console.error(error);
-        setModalMessage("Something went wrong. Please try again later.");
-        setModalSuccess(false);
-      } finally {
-        setIsSubmitting(false);
-        setModalOpen(true);
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formData,
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
+      );
+      if (result.text === "OK") {
+        setModalMessage("Form submitted successfully!");
+        setModalSuccess(true);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          company: "",
+          description: "",
+        });
       }
-    };
-  
-    const closeModal = () => {
-      setModalOpen(false);
-    };
+    } catch (error) {
+      console.error(error);
+      setModalMessage("Something went wrong. Please try again later.");
+      setModalSuccess(false);
+    } finally {
+      setIsSubmitting(false);
+      setModalOpen(true);
+    }
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
   return (
-    // <!-- Hero -->
-    <div
-    className="w-full bg-gradient-to-bl from-red-600 via-transparent max-w-[100rem] mx-auto animate-slide-down"
-      
-    >
-      
-      
-      
-      <div className="px-4 w-full  py-10 sm:px-6 lg:px-8 lg:py-24 mx-auto ">
-        {/* <!-- Grid --> */}
-        <div className="grid items-center md:grid-cols-2 gap-8 lg:gap-12">
-          <div>
-            <div className="max-w-2xl">
-              <h1 className="mb-4 font-semibold text-gray-800 text-4xl lg:text-5xl :text-neutral-200">
-                Fully customizable rules to match your unique needs
-              </h1>
-              <p className="text-gray-600 :text-neutral-400">
-                We understand the demands of a growing market and are equipped to handle everything from large,
-                bulky items to small ,
-                delicate products in a secure environment.
-              </p>
-            </div>
+    <section className="section bg-white">
+      <div className="shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div>
+          <span className="eyebrow">
+            <span className="h-1.5 w-1.5 rounded-full bg-red-600" />
+            Get in touch
+          </span>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl md:text-5xl">
+            Let&apos;s talk about your storage needs
+          </h2>
+          <p className="mt-5 lead">
+            We understand the demands of a growing market and are equipped to
+            handle everything from large, bulky items to small, delicate
+            products in a secure environment.
+          </p>
 
-            <blockquote className="hidden md:block relative max-w-sm mt-10">
-              <svg
-                className="absolute top-0 start-0 transhtmlForm -translate-x-6 -translate-y-8 size-16 text-gray-200 :text-neutral-800"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M7.39762 10.3C7.39762 11.0733 7.14888 11.7 6.6514 12.18C6.15392 12.6333 5.52552 12.86 4.76621 12.86C3.84979 12.86 3.09047 12.5533 2.48825 11.94C1.91222 11.3266 1.62421 10.4467 1.62421 9.29999C1.62421 8.07332 1.96459 6.87332 2.64535 5.69999C3.35231 4.49999 4.33418 3.55332 5.59098 2.85999L6.4943 4.25999C5.81354 4.73999 5.26369 5.27332 4.84476 5.85999C4.45201 6.44666 4.19017 7.12666 4.05926 7.89999C4.29491 7.79332 4.56983 7.73999 4.88403 7.73999C5.61716 7.73999 6.21938 7.97999 6.69067 8.45999C7.16197 8.93999 7.39762 9.55333 7.39762 10.3ZM14.6242 10.3C14.6242 11.0733 14.3755 11.7 13.878 12.18C13.3805 12.6333 12.7521 12.86 11.9928 12.86C11.0764 12.86 10.3171 12.5533 9.71484 11.94C9.13881 11.3266 8.85079 10.4467 8.85079 9.29999C8.85079 8.07332 9.19117 6.87332 9.87194 5.69999C10.5789 4.49999 11.5608 3.55332 12.8176 2.85999L13.7209 4.25999C13.0401 4.73999 12.4903 5.27332 12.0713 5.85999C11.6786 6.44666 11.4168 7.12666 11.2858 7.89999C11.5215 7.79332 11.7964 7.73999 12.1106 7.73999C12.8437 7.73999 13.446 7.97999 13.9173 8.45999C14.3886 8.93999 14.6242 9.55333 14.6242 10.3Z"
-                  fill="currentColor"
+          <div className="mt-10 space-y-3">
+            <a
+              href={`https://maps.google.com/?q=${encodeURIComponent(
+                `${business.streetAddress}, ${business.addressLocality}`,
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-4 rounded-2xl border border-line bg-white p-5 transition hover:border-red-100 hover:shadow-soft"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                >
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </span>
+              <span>
+                <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+                  Warehouse
+                </span>
+                <span className="mt-1 block text-sm font-medium text-ink">
+                  {business.streetAddress}, {business.addressLocality}{" "}
+                  {business.postalCode}
+                </span>
+              </span>
+            </a>
+
+            <a
+              href={`tel:${business.phone}`}
+              className="flex items-start gap-4 rounded-2xl border border-line bg-white p-5 transition hover:border-red-100 hover:shadow-soft"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                >
+                  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.9 2.3Z" />
+                </svg>
+              </span>
+              <span>
+                <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+                  Phone
+                </span>
+                <span className="mt-1 block text-sm font-medium text-ink">
+                  {business.telephoneDisplay}
+                </span>
+              </span>
+            </a>
+
+            <a
+              href={`mailto:${business.email}`}
+              className="flex items-start gap-4 rounded-2xl border border-line bg-white p-5 transition hover:border-red-100 hover:shadow-soft"
+            >
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-50 text-red-600">
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="4" width="20" height="16" rx="3" />
+                  <path d="m3 7 9 6 9-6" />
+                </svg>
+              </span>
+              <span>
+                <span className="block text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+                  Email
+                </span>
+                <span className="mt-1 block text-sm font-medium text-ink">
+                  {business.email}
+                </span>
+              </span>
+            </a>
+          </div>
+
+          <blockquote className="mt-10 rounded-2xl bg-[#F7F7F8] p-6">
+            <p className="font-display text-lg leading-snug text-ink">
+              &ldquo;Amazing people to work with. Very fast and professional
+              partner.&rdquo;
+            </p>
+            <footer className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+              Ahsan Ali
+            </footer>
+          </blockquote>
+        </div>
+
+        <div>
+          <form
+            onSubmit={handleSubmit}
+            className="rounded-3xl border border-line bg-white p-6 shadow-soft sm:p-8"
+          >
+            <h3 className="font-display text-2xl font-semibold tracking-tight text-ink">
+              Request a quote
+            </h3>
+            <p className="mt-1.5 text-sm text-muted">
+              Tell us what you need to store and we will get back to you.
+            </p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="firstName" className="field-label">
+                  First name
+                </label>
+                <input
+                  id="firstName"
+                  type="text"
+                  className="field"
+                  placeholder="Ali"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
                 />
-              </svg>
-
-              <div className="relative z-10">
-                <p className="text-xl italic text-gray-800 :text-white">
-                  Amazing people to work with. Very fast and professional
-                  partner.
-                </p>
               </div>
 
-              <footer className="mt-3">
-                <div className="flex items-center gap-x-4">
-                 
-                  <div className="grow">
-                    <div className="font-semibold text-gray-800 :text-neutral-200">
-                      Ahsan Ali
-                    </div>
-                   
-                  </div>
-                </div>
-              </footer>
-            </blockquote>
-          </div>
+              <div>
+                <label htmlFor="lastName" className="field-label">
+                  Last name
+                </label>
+                <input
+                  id="lastName"
+                  type="text"
+                  className="field"
+                  placeholder="Khan"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+              </div>
 
-          <div className="w-full">
-            <div className="w-full">
-              <form onSubmit={handleSubmit} className="p-4 sm:p-7 flex flex-col bg-white rounded-2xl shadow-lg">
-                <div className="text-center">
-                  <h1 className="block text-2xl font-bold text-gray-800 :text-white mb-5">
-                    Contact Us
-                  </h1>
-                </div>
+              <div>
+                <label htmlFor="email" className="field-label">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  className="field"
+                  placeholder="you@email.com"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        id="hs-hero-signup-htmlForm-floating-input-first-name"
-                        className="peer p-4 block w-full border-gray-200 rounded-lg text-sm placeholder:text-transparent focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none :bg-neutral-900 :border-neutral-700 :text-neutral-400 :focus:ring-neutral-600
-                          focus:pt-6
-                          focus:pb-2
-                          [&:not(:placeholder-shown)]:pt-6
-                          [&:not(:placeholder-shown)]:pb-2
-                          autofill:pt-6
-                          autofill:pb-2 border"
-                        placeholder="First Name"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        required
-                        
-                      />
-                      <label
-                        htmlFor="hs-hero-signup-htmlForm-floating-input-first-name"
-                        className="absolute top-0 start-0 p-4 h-full text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent origin-[0_0] peer-disabled:opacity-50 peer-disabled:pointer-events-none
-                            peer-focus:scale-90
-                            peer-focus:translate-x-0.5
-                            peer-focus:-translate-y-1.5
-                            peer-focus:text-gray-500 :peer-focus:text-neutral-500
-                            peer-[:not(:placeholder-shown)]:scale-90
-                            peer-[:not(:placeholder-shown)]:translate-x-0.5
-                            peer-[:not(:placeholder-shown)]:-translate-y-1.5
-                            peer-[:not(:placeholder-shown)]:text-gray-500"
-                      >
-                        First name
-                      </label>
-                    </div>
-                  </div>
+              <div>
+                <label htmlFor="company" className="field-label">
+                  Company
+                </label>
+                <input
+                  id="company"
+                  type="text"
+                  className="field"
+                  placeholder="Company name"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                />
+              </div>
 
-                  <div>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        id="hs-hero-signup-htmlForm-floating-input-last-name"
-                        className="peer p-4 block w-full border-gray-200 rounded-lg text-sm placeholder:text-transparent focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none :bg-neutral-900 :border-neutral-700 :text-neutral-400 :focus:ring-neutral-600
-                          focus:pt-6
-                          focus:pb-2
-                          [&:not(:placeholder-shown)]:pt-6
-                          [&:not(:placeholder-shown)]:pb-2
-                          autofill:pt-6
-                          autofill:pb-2 border"
-                        placeholder="lastName"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        
-                      />
-                      <label
-                        htmlFor="hs-hero-signup-htmlForm-floating-input-last-name"
-                        className="absolute top-0 start-0 p-4 h-full text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent origin-[0_0] peer-disabled:opacity-50 peer-disabled:pointer-events-none
-                            peer-focus:scale-90
-                            peer-focus:translate-x-0.5
-                            peer-focus:-translate-y-1.5
-                            peer-focus:text-gray-500 :peer-focus:text-neutral-500
-                            peer-[:not(:placeholder-shown)]:scale-90
-                            peer-[:not(:placeholder-shown)]:translate-x-0.5
-                            peer-[:not(:placeholder-shown)]:-translate-y-1.5
-                            peer-[:not(:placeholder-shown)]:text-gray-500 :peer-[:not(:placeholder-shown)]:text-neutral-500 :text-neutral-500"
-                      >
-                        Last name
-                      </label>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="relative">
-                      <input
-                        type="email"
-                        id="hs-hero-signup-htmlForm-floating-input-email"
-                        className="peer p-4 block w-full border-gray-200 rounded-lg text-sm placeholder:text-transparent focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none :bg-neutral-900 :border-neutral-700 :text-neutral-400 :focus:ring-neutral-600
-                          focus:pt-6
-                          focus:pb-2
-                          [&:not(:placeholder-shown)]:pt-6
-                          [&:not(:placeholder-shown)]:pb-2
-                          autofill:pt-6
-                          autofill:pb-2 border"
-                        placeholder="you@email.com"
-                        name="email"
-                          value={formData.email}
-                        onChange={handleChange}
-                        required
-                          
-                      />
-                      <label
-                        htmlFor="hs-hero-signup-htmlForm-floating-input-email"
-                        className="absolute top-0 start-0 p-4 h-full text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent origin-[0_0] peer-disabled:opacity-50 peer-disabled:pointer-events-none
-                            peer-focus:scale-90
-                            peer-focus:translate-x-0.5
-                            peer-focus:-translate-y-1.5
-                            peer-focus:text-gray-500 :peer-focus:text-neutral-500
-                            peer-[:not(:placeholder-shown)]:scale-90
-                            peer-[:not(:placeholder-shown)]:translate-x-0.5
-                            peer-[:not(:placeholder-shown)]:-translate-y-1.5
-                            peer-[:not(:placeholder-shown)]:text-gray-500 :peer-[:not(:placeholder-shown)]:text-neutral-500 :text-neutral-500"
-                      >
-                        Email
-                      </label>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="relative">
-                      <input
-                        type="text"
-                        id="hs-hero-signup-htmlForm-floating-input-company-name"
-                        className="peer p-4 block w-full border-gray-200 rounded-lg text-sm placeholder:text-transparent focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none :bg-neutral-900 :border-neutral-700 :text-neutral-400 :focus:ring-neutral-600
-                          focus:pt-6
-                          focus:pb-2
-                          [&:not(:placeholder-shown)]:pt-6
-                          [&:not(:placeholder-shown)]:pb-2
-                          autofill:pt-6
-                          autofill:pb-2 border"
-                        placeholder="Company"
-                        name="company"
-                          value={formData.company}
-                          onChange={handleChange}
-                      />
-                      <label
-                        htmlFor="hs-hero-signup-htmlForm-floating-input-company-name"
-                        className="absolute top-0 start-0 p-4 h-full text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent origin-[0_0] peer-disabled:opacity-50 peer-disabled:pointer-events-none
-                            peer-focus:scale-90
-                            peer-focus:translate-x-0.5
-                            peer-focus:-translate-y-1.5
-                            peer-focus:text-gray-500 :peer-focus:text-neutral-500
-                            peer-[:not(:placeholder-shown)]:scale-90
-                            peer-[:not(:placeholder-shown)]:translate-x-0.5
-                            peer-[:not(:placeholder-shown)]:-translate-y-1.5
-                            peer-[:not(:placeholder-shown)]:text-gray-500 :peer-[:not(:placeholder-shown)]:text-neutral-500 :text-neutral-500"
-                      >
-                        Company name
-                      </label>
-                    </div>
-                  </div>
-
-                  <div className="relative col-span-full">
-                    <div className="relative">
-                      <textarea
-                        className="peer p-4 block w-full border-gray-200 rounded-lg text-sm placeholder:text-transparent focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none :bg-neutral-900 :border-neutral-700 :text-neutral-400 :focus:ring-neutral-600
-                          focus:pt-6
-                          focus:pb-2
-                          [&:not(:placeholder-shown)]:pt-6
-                          [&:not(:placeholder-shown)]:pb-2
-                          autofill:pt-6
-                          autofill:pb-2 border"
-                        placeholder="Description"
-                        name="description"
-                          value={formData.description}
-                          onChange={handleChange}
-                          
-                      />
-                      <label
-                        htmlFor="hs-hero-signup-htmlForm-floating-input-new-password"
-                        className="absolute top-0 start-0 p-4 h-full text-sm truncate pointer-events-none transition ease-in-out duration-100 border border-transparent origin-[0_0] peer-disabled:opacity-50 peer-disabled:pointer-events-none
-                            peer-focus:scale-90
-                            peer-focus:translate-x-0.5
-                            peer-focus:-translate-y-1.5
-                            peer-focus:text-gray-500 :peer-focus:text-neutral-500
-                            peer-[:not(:placeholder-shown)]:scale-90
-                            peer-[:not(:placeholder-shown)]:translate-x-0.5
-                            peer-[:not(:placeholder-shown)]:-translate-y-1.5
-                            peer-[:not(:placeholder-shown)]:text-gray-500 :peer-[:not(:placeholder-shown)]:text-neutral-500 :text-neutral-500"
-                      >
-                        Description
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-5">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full inline-flex justify-center items-center gap-x-2 text-sm  bg-gradient-to-r from-red-600 to-orange-500 hover:text-black hover:bg-white text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-1 hover:scale-105 duration-300 ease-in-out"
-                  >
-                   {isSubmitting ? 'Sending...' : 'Submit'}
-                  </button>
-                </div>
-              </form>
-             
+              <div className="sm:col-span-2">
+                <label htmlFor="description" className="field-label">
+                  What do you need stored?
+                </label>
+                <textarea
+                  id="description"
+                  className="field min-h-[132px] resize-y"
+                  placeholder="Cargo type, volume, duration and any customs requirements"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-          </div>
+
+            <div className="mt-6">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isSubmitting ? "Sending..." : "Submit request"}
+              </button>
+              <p className="mt-3 text-center text-xs text-muted">
+                Prefer to talk? Call{" "}
+                <a
+                  href={`tel:${business.phone}`}
+                  className="font-semibold text-ink transition hover:text-red-600"
+                >
+                  {business.telephoneDisplay}
+                </a>
+              </p>
+            </div>
+          </form>
         </div>
       </div>
+
       {modalOpen && (
-         <Modal
-         isOpen={modalOpen}
-         onClose={closeModal}
-         modalMessage={modalMessage}
-         modalSuccess={modalSuccess}
-       />
+        <Modal
+          isOpen={modalOpen}
+          onClose={closeModal}
+          modalMessage={modalMessage}
+          modalSuccess={modalSuccess}
+        />
       )}
-    </div>
+    </section>
   );
 }

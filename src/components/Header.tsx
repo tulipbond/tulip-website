@@ -1,119 +1,142 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import Image from 'next/image';
+"use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const navigation = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact" },
+];
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);      
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const bannerHeight = 600;
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleScroll = () => {
-    if (window.scrollY > bannerHeight) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
-  };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const getLinkClasses = (path: string): string => {
-    return pathname === path
-    ? `border-b-2 ${isScrolled ? 'text-red-500 border-red-500' : 'text-red-500 border-red-500'}`
-    : `${isScrolled ? 'text-gray-800 hover:text-red-500 hover:border-red-500' : 'text-gray-200 hover:text-red-500 hover:border-red-500'}`;
-};
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const solid = scrolled || isOpen;
+
+  const linkClass = (href: string) => {
+    if (pathname === href) return "text-red-600";
+    return solid
+      ? "text-ink/65 hover:text-ink"
+      : "text-white/75 hover:text-white";
+  };
 
   return (
-    <nav className={`w-full fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-      isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-    }`}>
-      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logoFinal.png" alt="Tulip Bond warehouse logo" width={100} height={50} />
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        solid
+          ? "border-b border-line bg-white/85 backdrop-blur-xl"
+          : "bg-gradient-to-b from-black/55 via-black/20 to-transparent"
+      }`}
+    >
+      <div className="shell flex h-20 items-center justify-between">
+        <Link href="/" aria-label="Tulip Bond home" className="shrink-0">
+          <Image
+            src="/logoFinal.png"
+            alt="Tulip Bond custom bonded warehouse logo"
+            width={120}
+            height={56}
+            priority
+            className="h-11 w-auto"
+          />
+        </Link>
+
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${linkClass(
+                item.href,
+              )}`}
+            >
+              {item.label}
+              {pathname === item.href && (
+                <span className="absolute inset-x-4 -bottom-0.5 h-0.5 rounded-full bg-gradient-to-r from-red-600 to-orange-500" />
+              )}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden md:block">
+          <Link href="/contact" className="btn-primary !px-6 !py-2.5">
+            Get a quote
           </Link>
-
-          {/* Desktop Links */}
-          <div className="hidden md:flex space-x-8">
-            <Link href="/" className={getLinkClasses('/')}>Home</Link>
-            <Link href="/about" className={getLinkClasses('/about')}>About</Link>
-            <Link href="/services" className={getLinkClasses('/services')}>Services</Link>
-            <Link href="/contact" className={getLinkClasses('/contact')}>Contact</Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden text-red-500 hover:text-red-500 focus:outline-none"
-            onClick={handleToggle}
-          >
-            <svg
-              className="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-              />
-            </svg>
-          </button>
         </div>
+
+        <button
+          type="button"
+          className={`flex h-11 w-11 items-center justify-center rounded-full border transition md:hidden ${
+            solid
+              ? "border-line text-ink"
+              : "border-white/25 text-white backdrop-blur"
+          }`}
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-expanded={isOpen}
+          aria-label="Toggle menu"
+        >
+          <svg
+            className="h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={1.8}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 7h16M4 12h16M4 17h16"}
+            />
+          </svg>
+        </button>
       </div>
 
-       {/* Mobile Menu */}
-       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-white/95 backdrop-blur shadow-md transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        } md:hidden`}
+      <div
+        className={`md:hidden ${
+          isOpen ? "block" : "hidden"
+        } border-t border-line bg-white`}
       >
-        <div className="px-10 py-10 gap-5 space-y-2 flex flex-col text-center relative">
-          {/* Close Button */}
-          <button
-            type="button"
-            className="absolute top-4 left-2 text-red-500 focus:outline-none"
-            onClick={handleToggle}
-          >
-            <svg
-              className="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        <nav className="shell flex flex-col gap-1 py-6" aria-label="Mobile">
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`rounded-xl px-2 py-3 font-display text-2xl font-semibold tracking-tight transition ${
+                pathname === item.href ? "text-red-600" : "text-ink"
+              }`}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          
-          <Link href="/" className={getLinkClasses('/')} onClick={handleToggle}>Home</Link>
-          <Link href="/about" className={getLinkClasses('/about')} onClick={handleToggle}>About</Link>
-          <Link href="/services" className={getLinkClasses('/services')} onClick={handleToggle}>Services</Link>
-          <Link href="/contact" className={getLinkClasses('/contact')} onClick={handleToggle}>Contact</Link>
-        </div>
+              {item.label}
+            </Link>
+          ))}
+          <Link href="/contact" className="btn-primary mt-4 w-full">
+            Get a quote
+          </Link>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 };
 
