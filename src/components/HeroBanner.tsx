@@ -42,7 +42,7 @@ export default function HeroBanner() {
 
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
             Private bonded storage, security and logistics for importers and
-            industrial clients — from bulky industrial cargo to small, high-value
+            industrial clients from bulky industrial cargo to small, high-value
             goods, all in one secure facility.
           </p>
 

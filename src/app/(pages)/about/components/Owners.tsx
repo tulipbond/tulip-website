@@ -15,7 +15,7 @@ const OwnerDetail = () => {
               alt="Muhammad Afzal Munif, founder of Tulip Industries bonded warehouse"
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover object-top"
+              className="object-contain object-center"
             />
           </div>
 

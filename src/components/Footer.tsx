@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
               />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/55">
-              Custom bonded and private warehousing in SITE, Karachi — secure
+              Custom bonded and private warehousing in SITE, Karachi, secure
               storage, 24/7 protection and on-site logistics since 1976.
             </p>
             <div className="mt-6 flex items-center gap-2">
